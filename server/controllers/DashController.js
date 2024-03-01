@@ -5,11 +5,9 @@ function dashboardView(req, res)
     res.status(200).send({success: true})
 }
 
-
-//fetch the database WORK IN PROGRESS LIMIT = 19
-async function dashboardResults(req, res, Limit)
+async function dashboardResults(req, res)
 {
-    const dashboardResult = await dataResponse.find().limit(Limit = 10).exec()
+    const dashboardResult = await dataResponse.find().limit(req.params.limit).exec()
     .then(dashboardResult => {
         res.json(dashboardResult);
     })

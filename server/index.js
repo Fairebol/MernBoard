@@ -22,7 +22,3 @@ async function appInit(appConfig, dbConfig)
 }
 
 appInit(appConfig, database)
-
-// View routes
-// app.set('title', 'MERN-Board');
-// app.get("/", (req, res) => res.render("dashboard"));

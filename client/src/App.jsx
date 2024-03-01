@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import DashboardPage from "./pages/dashboardPage.jsx";
+import DashboardPage from "./pages/DashboardPage.jsx";
 
 export default function App(){
   return (
-    <BrowserRouter className="font-bold text-4xl">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<DashboardPage />}/>
         <Route path="/profile" element={<h1>Profile</h1>}/>
