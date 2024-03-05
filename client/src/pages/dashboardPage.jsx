@@ -20,7 +20,6 @@ export default function DashboardPage() {
                     <Barchart x_axis="relevance" y_axis="likelihood"/>
                 </Graphbox> 
                 
-                
             </div>
             
         </div>

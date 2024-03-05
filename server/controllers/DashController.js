@@ -1,4 +1,4 @@
-const dataResponse = require('../models/data');
+const Da = require('../models/data');
 
 function dashboardView(req, res)
 {

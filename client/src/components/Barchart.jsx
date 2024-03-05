@@ -8,7 +8,7 @@ export default function Barchart({x_axis, y_axis}) {
         <PlotFigure
         options={{
           x: { tickFormat: ",", grid: true },
-          y: { tickFormat: "m", grid:true},
+          y: { tickFormat: "m", grid: true},
           marks: [Plot.barY(timeseries, { x: x_axis, y: y_axis })]
         }}
       />

@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { model, Schema } = require('mongoose');
 
 const dashboardSchema = new Schema({
     end_year: String,
@@ -21,6 +20,6 @@ const dashboardSchema = new Schema({
     likelihood: Number
 })
 
-const dataResponse = mongoose.model('dashboard', dashboardSchema)
+const dataResponse = model('dashboard', dashboardSchema)
 
 module.exports =  dataResponse;
