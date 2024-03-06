@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 body {
-    background-color: #304159;
-    color: whitesmoke;
+    background-color: #2f3348;
+    color: whitesmoke;   
+}
+
+html {
+    scrollbar-width: none;
 }
 
 .custom-scroll {
