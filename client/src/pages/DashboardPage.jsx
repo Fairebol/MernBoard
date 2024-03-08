@@ -17,9 +17,9 @@ export default function DashboardPage() {
                     <Navbar />
                 </div>
                 <Analytics 
-                images={['../public/img/Voxel-cube.webp',
-                        '../public/img/Voxel-island_1.webp', 
-                        '../public/img/Voxel-island_2.webp']}/>
+                images={['../img/Voxel-cube.webp',
+                        '../img/Voxel-island_1.webp', 
+                        '../img/Voxel-island_2.webp']}/>
                 
 
                 <Charts></Charts>
