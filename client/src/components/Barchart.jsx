@@ -7,7 +7,11 @@ export default function Barchart({ datashown,
    typechart, 
    labels, 
    bgColor,
-  borderColor}) 
+  borderColor,
+  display,
+  tension,
+  x_axis,
+  y_axis}) 
 {
   Chart.defaults.fontColor = 'white'
 
@@ -20,14 +24,17 @@ export default function Barchart({ datashown,
       const chartdata = {
         type: typechart,
         data: {
-          labels: data.map(e => e.source),
+          labels: data.filter(item => item[x_axis] !== "")
+                  .map(data => data[x_axis]),
           datasets: [{
             label: labels,
             fill: true,
             borderWidth: 1,
             borderColor: borderColor,
-            data: data.map(e => e.likelihood), // Aquí necesitas proporcionar un array de datos
-            backgroundColor: bgColor
+            data: data.filter(item => item[y_axis] !== "")
+                  .map(data => data[y_axis]), 
+            backgroundColor: bgColor,
+            tension: tension
           }]
         },
         options: {
@@ -36,22 +43,26 @@ export default function Barchart({ datashown,
               beginAtZero: true,
               ticks: {
                 stepSize: 1
-              }
+              },
+              display: false
             },
             x: {
               ticks: {
                 stepSize: 1,
-              }
+              },
+              display: false
             }
           },
           plugins: {
             legend: {
               labels: {
                 color: 'Lightgray', 
-                    font: {
-                        weight: 'bold'  
-                    }
-              }
+                font: {
+                    weight: 'bold'  
+                },
+                position: 'right'
+              },
+              display: display
             }
           }
         }
@@ -69,6 +80,8 @@ export default function Barchart({ datashown,
   }, [canvasid, typechart, labels, bgColor]);
 
   return (
-    <canvas className='w-12 h-12 max-w-md' id={canvasid}></canvas>
+    <canvas 
+    className='max-w-64 max-h-64' 
+    id={canvasid}></canvas>
   );
 }

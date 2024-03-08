@@ -1,4 +1,5 @@
 import AsideButton from "./AsideButton"
+import Dropdown from "./Dropdown"
 
 export default function Aside() {
     return (
@@ -8,24 +9,11 @@ export default function Aside() {
                 <h1>MERN</h1><h2>Board</h2>
             </div>
             
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
-            <AsideButton />
+            <Dropdown options={['Lorem', 'Ipsum', 'Conquesterum']}/>
+
+            <AsideButton title='lorem'/>
+            <AsideButton title='Ipsum'/>
+            
         </section>
     )
 }

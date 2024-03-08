@@ -1,11 +1,19 @@
 import axios from 'axios';
 const api = 'https://mernboard-production.up.railway.app/api'
+// const api = "http://localhost:8080/api"
 
 
 export default async function dbFetch(rows) {
-    
     try {
-        const response = await axios.get(`${api}/` + rows);
+        let response
+        if (rows) 
+        {
+            response = await axios.get(`${api}/` + rows);
+        }
+        else
+        {
+            response = await axios.get(`${api}/`);
+        }
         return response.data;
     } catch (err) {
         console.error(err);

@@ -1,7 +1,8 @@
+import Analytics from '../components/Analytics'
 import Aside from '../components/Aside'
+import Charts from '../components/Charts'
 import Navbar from '../components/Navbar'
-import Chart from '../components/Barchart'
-import Graphbox from '../components/Graphbox'
+import SourceButton from '../components/SourceButton'
 
 export default function DashboardPage() {
 
@@ -11,32 +12,21 @@ export default function DashboardPage() {
         <div className="font-bold w-full h-full flex flex-row">
             <Aside  />
 
-            <div className="flex flex-col w-full ">
-                <div className="gap-x-4 gap-y-2 mx-2 my-4 [&>*]:border-2 [&>*]:border-teal-700 [&>*]:rounded-md">
+            <div className="w-full p-2 ">
+                <div className="gap-x-4 gap-y-2 my-4 [&>*]:border-[1px] [&>*]:border-gray-600 [&>*]:rounded-md">
                     <Navbar />
                 </div>
+                <Analytics 
+                images={['../../Voxel-cube.webp',
+                        '../../Voxel-island_1.webp', 
+                        '../../Voxel-island_2.webp']}/>
                 
-                <div className='grid grid-flow-row [&>*]:border-2 [&>*]:border-teal-700 [&>*]:rounded-md'>
-                <Graphbox>
-                    <Chart 
-                    datashown={10} 
-                    canvasid="barchart" 
-                    labels='likelihood' 
-                    typechart='radar'
-                    bgColor={['rgba(255, 99, 132, 0.2)', 'green', 'blue']}
-                    borderColor='rgba(255, 99, 132, 0.9)'/>
-                </Graphbox> 
-                <Graphbox>
-                    <Chart 
-                    datashown={10} 
-                    canvasid="Donut"
-                    typechart='bar'
-                    labels='Source'
-                    bgColor={['red', 'green', 'blue']}/>
-                </Graphbox> 
-                </div>
-                
+
+                <Charts></Charts>
             </div>
+
+
+            <SourceButton />
             
         </div>
         
