@@ -2,16 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import dbFetch from '../api/dbFetch'
 import Chart from 'chart.js/auto';
 
-export default function Barchart({ datashown,
-   canvasid = "canvas", 
-   typechart, 
-   labels, 
-   bgColor,
+export default function CreateChart({ datashown,
+  canvasid, 
+  typechart, 
+  labels, 
+  bgColor,
   borderColor,
   display,
   tension,
   x_axis,
-  y_axis}) 
+  y_axis,
+  title}) 
 {
   Chart.defaults.fontColor = 'white'
 
@@ -21,17 +22,31 @@ export default function Barchart({ datashown,
     const fetchData = async () => {   
       const data = await dbFetch(datashown);
 
+      const reducedData = data.reduce((acc, curr) => {
+        const existingItem = acc.find(item => item[x_axis] === curr[x_axis]);
+        if (existingItem) 
+        {  
+          existingItem[y_axis] += curr[y_axis];
+        } 
+        
+        else 
+        {
+          acc.push(curr);
+        }
+        return acc
+      }, [])
+
       const chartdata = {
         type: typechart,
         data: {
-          labels: data.filter(item => item[x_axis] !== "")
+          labels: reducedData.filter(item => item[x_axis] !== "")
                   .map(data => data[x_axis]),
           datasets: [{
             label: labels,
             fill: true,
             borderWidth: 1,
             borderColor: borderColor,
-            data: data.filter(item => item[y_axis] !== "")
+            data: reducedData.filter(item => item[y_axis] !== "")
                   .map(data => data[y_axis]), 
             backgroundColor: bgColor,
             tension: tension
@@ -54,6 +69,11 @@ export default function Barchart({ datashown,
             }
           },
           plugins: {
+            title:{
+              display: title ? true : false,
+              text: title,
+              color: 'white'
+            },
             legend: {
               labels: {
                 color: 'Lightgray', 
@@ -75,6 +95,7 @@ export default function Barchart({ datashown,
       const ctx = document.getElementById(canvasid).getContext("2d");
       chartRef.current = new Chart(ctx, chartdata);
     };
+    
 
     fetchData();
   }, [canvasid, typechart, labels, bgColor]);

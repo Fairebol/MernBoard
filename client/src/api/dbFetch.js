@@ -1,6 +1,6 @@
 import axios from 'axios';
 const api = 'https://mernboard-production.up.railway.app/api'
-// const api = "http://localhost:8080/api"
+// const api = "http://localhost:8080/api" # ONLY DEV 
 
 
 export default async function dbFetch(rows) {

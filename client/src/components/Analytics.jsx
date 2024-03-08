@@ -50,21 +50,25 @@ export default function Analytics({ images }) {
 
               <PointFilled />
             </button>
+            
           ))}
         </div>
-
+        
         <div className="p-2 bg-slate-950 bg-opacity-10 w-fit rounded-lg flex flex-col ">
             <div>
                 <span>Intensity Avg:</span>
-                <section>{intensityAverage}</section>
+                <section>{intensityAverage || 'Loading...'}</section>
             </div>
             <div>
                 <span>Relevance Avg: </span>
-                <section>
-                    {relevanceAverage}
+                <section className="">
+                    <span>
+                      {relevanceAverage || 'Loading...'}
+                    </span>
                 </section>
             </div>
         </div>
+        
 
         <img className="flex w-36 absolute right-1 top-3" src={images[currentImageIndex]} alt="" />
       </div>
